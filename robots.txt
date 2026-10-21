@@ -1,0 +1,13 @@
+# ==============================================================================
+# ApexNova Holding Company — robots.txt
+# ==============================================================================
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-includes/
+Allow: /wp-includes/js/
+Allow: /wp-includes/css/
+Allow: /wp-content/uploads/
+Allow: /wp-content/themes/
+
+Sitemap: http://localhost/apexnova/sitemap_index.xml

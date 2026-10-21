@@ -1,0 +1,301 @@
+/*
+Theme Name: ApexNova Child (Astra)
+Description: Complete RTL stylesheet for ApexNova Holding Company (Arabic Version)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+:root {
+  --an-font-ar: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Base RTL Direction & Typography */
+html[dir="rtl"],
+body.rtl {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--an-font-ar);
+}
+
+body.rtl h1,
+body.rtl h2,
+body.rtl h3,
+body.rtl h4,
+body.rtl h5,
+body.rtl h6,
+body.rtl .an-brand-title,
+body.rtl .an-slide-title,
+body.rtl .an-btn,
+body.rtl .an-nav-link {
+  font-family: var(--an-font-ar);
+}
+
+/* Mirrored Topbar */
+body.rtl .an-topbar-left {
+  flex-direction: row;
+}
+
+body.rtl .an-topbar-left span,
+body.rtl .an-topbar-left a {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+body.rtl .an-lang-switch {
+  direction: ltr;
+}
+
+/* Header & Brand Logo */
+body.rtl .an-brand-logo {
+  flex-direction: row;
+}
+
+body.rtl .an-brand-text {
+  text-align: right;
+}
+
+/* Navigation & Dropdowns */
+body.rtl .an-nav-menu {
+  flex-direction: row;
+}
+
+body.rtl .an-arrow {
+  display: inline-block;
+  margin-right: 4px;
+  margin-left: 0;
+}
+
+body.rtl .an-dropdown {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+body.rtl .an-dropdown li a {
+  text-align: right;
+}
+
+body.rtl .an-mega-dropdown {
+  left: 0;
+  right: 0;
+  text-align: right;
+}
+
+body.rtl .an-mega-col h4 {
+  border-left: none;
+  border-right: 3px solid var(--an-teal);
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+body.rtl .an-mega-col ul li a {
+  text-align: right;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+body.rtl .an-mega-col ul li a:hover {
+  transform: translateX(-4px);
+  color: var(--an-teal);
+}
+
+/* Directional Chevrons & Arrows */
+body.rtl .an-card-arrow,
+body.rtl .an-service-learn,
+body.rtl .an-cta-arrow,
+body.rtl .an-breadcrumb-sep,
+body.rtl .an-btn-arrow {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* Hero Slider RTL */
+body.rtl .an-slide-content {
+  text-align: right;
+}
+
+body.rtl .an-slide-actions {
+  justify-content: flex-start;
+}
+
+body.rtl .an-slider-nav.prev {
+  right: 24px;
+  left: auto;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+body.rtl .an-slider-nav.next {
+  left: 24px;
+  right: auto;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Split Content Sections */
+body.rtl .an-split-grid {
+  direction: rtl;
+}
+
+body.rtl .an-split-grid.reverse .an-split-text {
+  order: 2;
+}
+
+body.rtl .an-split-grid.reverse .an-split-media {
+  order: 1;
+}
+
+/* Stats Counter Strip */
+body.rtl .an-stats-grid {
+  direction: rtl;
+}
+
+body.rtl .an-stat-item {
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.rtl .an-stat-item:last-child {
+  border-left: none;
+}
+
+/* Standards Chips & Badges */
+body.rtl .an-standard-chip {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+/* 9-Step Process Timeline (Transformer Testing & Commissioning) */
+body.rtl .an-timeline {
+  padding-right: 40px;
+  padding-left: 0;
+  border-right: 3px solid var(--an-teal);
+  border-left: none;
+}
+
+body.rtl .an-timeline-item {
+  padding-left: 0;
+  padding-right: 50px;
+}
+
+body.rtl .an-timeline-badge {
+  left: auto;
+  right: -58px;
+}
+
+/* Service & Card Grids */
+body.rtl .an-service-card,
+body.rtl .an-project-card,
+body.rtl .an-course-card,
+body.rtl .an-job-card,
+body.rtl .an-news-card {
+  text-align: right;
+}
+
+body.rtl .an-service-card .an-service-icon {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Course Clusters Accordion / Tabs */
+body.rtl .an-accordion-header {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+body.rtl .an-accordion-icon {
+  transform: scaleX(-1);
+}
+
+/* Forms & Inputs */
+body.rtl .wpforms-form,
+body.rtl .an-form {
+  text-align: right;
+}
+
+body.rtl .an-form-group label {
+  text-align: right;
+  display: block;
+}
+
+body.rtl .an-form-group input,
+body.rtl .an-form-group select,
+body.rtl .an-form-group textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+body.rtl .an-consent-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+body.rtl .an-consent-box input[type="checkbox"] {
+  margin-top: 4px;
+}
+
+/* Footer RTL */
+body.rtl .an-footer {
+  text-align: right;
+}
+
+body.rtl .an-footer h4::after {
+  left: auto;
+  right: 0;
+}
+
+body.rtl .an-footer ul li a:hover {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
+body.rtl .an-footer-contact-item {
+  flex-direction: row;
+}
+
+body.rtl .an-footer-bottom {
+  flex-direction: row-reverse;
+}
+
+body.rtl .an-footer-legal {
+  flex-direction: row-reverse;
+}
+
+/* Mobile Navigation Drawer RTL */
+@media (max-width: 768px) {
+  body.rtl .an-nav-menu {
+    left: auto;
+    right: 0;
+    text-align: right;
+  }
+  
+  body.rtl .an-nav-link {
+    justify-content: space-between;
+  }
+  
+  body.rtl .an-dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding-right: 18px;
+    padding-left: 0;
+  }
+}
+
+/* Accessibility Skip-Link RTL */
+body.rtl .skip-link {
+  left: auto;
+  right: 16px;
+}
+
+/* Cookie Consent Banner RTL */
+body.rtl .an-cookie-consent {
+  direction: rtl;
+  text-align: right;
+}
+
+body.rtl .an-cookie-text {
+  text-align: right;
+}
+
+body.rtl .an-cookie-actions {
+  flex-direction: row;
+}
