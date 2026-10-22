@@ -5,10 +5,10 @@
  */
 
 // ** Database settings - Obtain these from InfinityFree VistaPanel -> MySQL Databases ** //
-define( 'DB_NAME', 'YOUR_INFINITYFREE_DB_NAME' );     // e.g. if0_12345678_apexnova
-define( 'DB_USER', 'YOUR_INFINITYFREE_DB_USER' );     // e.g. if0_12345678
-define( 'DB_PASSWORD', 'YOUR_INFINITYFREE_ACCOUNT_PASSWORD' ); // Your account password
-define( 'DB_HOST', 'YOUR_INFINITYFREE_SQL_HOST' );     // e.g. sql123.infinityfree.com (NOT localhost!)
+define( 'DB_NAME', 'if0_43242473_apexnova' );     // e.g. if0_12345678_apexnova
+define( 'DB_USER', 'if0_43242473' );     // e.g. if0_12345678
+define( 'DB_PASSWORD', '2tkQ9pXxo9' ); // Your account password
+define( 'DB_HOST', 'sql211.infinityfree.com' );     // e.g. sql123.infinityfree.com (NOT localhost!)
 define( 'DB_CHARSET', 'utf8mb4' );
 define( 'DB_COLLATE', '' );
 
