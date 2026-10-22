@@ -1,0 +1,78 @@
+# ==============================================================================
+# ApexNova Holding Company — InfinityFree .htaccess
+# ==============================================================================
+
+# 1. Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 2. Block Directory Browsing
+Options -Indexes
+
+# 3. Block Sensitive Files and Extensions
+<FilesMatch "^(wp-config\.php|\.htaccess|\.htpasswd|\.git|\.env|php\.ini|\.user\.ini)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(sql|bak|log|tar|gz|zip|sh|ini)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 4. Disable XML-RPC (Brute-Force & DDoS mitigation)
+<Files xmlrpc.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# 5. GZIP / Deflate Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 6. Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# 7. WordPress Core Rewrite Rules (Root domain)
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+
+# Block author scans
+RewriteCond %{REQUEST_URI} !^/wp-admin [NC]
+RewriteCond %{QUERY_STRING} ^author=([0-9]+) [NC]
+RewriteRule .* - [F,L]
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
