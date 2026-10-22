@@ -29,7 +29,8 @@ def prepare_for_domain(target_domain):
     if not target_domain.startswith("http://") and not target_domain.startswith("https://"):
         target_domain = "http://" + target_domain
 
-    print(f"\nPreparing deployment files for domain: {target_domain}")
+    clean_host = target_domain.replace("http://", "").replace("https://", "")
+    print(f"\nPreparing deployment files for domain: {target_domain} (Host: {clean_host})")
 
     # 1. Generate updated SQL with rewritten URLs
     with open(latest_sql, "r", encoding="utf-8", errors="replace") as f:
@@ -170,9 +171,13 @@ define( 'NONCE_SALT',       'WjXq,L@b%Z#*Y_tS~1(F3?e-0$o+8=w>zC7]v&K5/r<u21)bJ-a
 
 $table_prefix = 'wp_';
 
-// Site URLs
-define( 'WP_HOME', '{target_domain}' );
-define( 'WP_SITEURL', '{target_domain}' );
+// Dynamic Site URLs (supports both HTTP and HTTPS automatically)
+$is_ssl = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === 1)) 
+       || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+$site_proto = $is_ssl ? 'https://' : 'http://';
+$site_host = '{clean_host}';
+define( 'WP_HOME', $site_proto . $site_host );
+define( 'WP_SITEURL', $site_proto . $site_host );
 
 // Performance & Limits
 define( 'WP_MEMORY_LIMIT', '256M' );

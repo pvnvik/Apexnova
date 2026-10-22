@@ -26,9 +26,13 @@ define( 'NONCE_SALT',       'WjXq,L@b%Z#*Y_tS~1(F3?e-0$o+8=w>zC7]v&K5/r<u21)bJ-a
 
 $table_prefix = 'wp_';
 
-// Site URLs
-define( 'WP_HOME', 'http://apexnova.infinityfreeapp.com' );
-define( 'WP_SITEURL', 'http://apexnova.infinityfreeapp.com' );
+// Dynamic Site URLs (supports both HTTP and HTTPS automatically)
+$is_ssl = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === 1)) 
+       || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+$site_proto = $is_ssl ? 'https://' : 'http://';
+$site_host = 'apexnova.gt.tc';
+define( 'WP_HOME', $site_proto . $site_host );
+define( 'WP_SITEURL', $site_proto . $site_host );
 
 // Performance & Limits
 define( 'WP_MEMORY_LIMIT', '256M' );
